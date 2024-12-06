@@ -1,13 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>about</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eaf7ff;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+        p {
+            color: #555555;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .team-member {
+            flex: 1 1 30%;
+            background-color: #f8f9fa;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666666;
+        }
+    </style>
 <body>
-<a href="{{ url_for('about_us') }}">about-us</a>
-<a href="{{ url_for('contact_us') }}">contact-us</a>
-<a href="{{ url_for('index') }}">index</a>
-<h1>i am in about page</h1>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to <span class="highlight">Vehicle Sales</span>, your trusted partner in finding the perfect vehicle for your needs.
+            We specialize in providing a wide range of vehicles, from sedans and SUVs to trucks and electric cars, ensuring there's something for everyone.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            At <span class="highlight">Vehicle Sales</span>, our mission is to simplify the vehicle-buying process.
+            We aim to provide high-quality vehicles, excellent customer service, and valuable data insights to help our customers make informed decisions.
+        </p>
+
+        <h2>Our Values</h2>
+        <ul>
+            <li>Customer Satisfaction</li>
+            <li>Transparency and Integrity</li>
+            <li>Innovation in Vehicle Solutions</li>
+            <li>Environmental Responsibility</li>
+        </ul>
+
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member">
+                <h3>lokesh</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member">
+                <h3>Madhan</h3>
+                <p>Head of Sales</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member">
+                <h3>Gowtham T M</h3>
+                <p>Data Analyst</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Vehicle Sales. All rights reserved.</p>
+    </footer>
 </body>
-</html>
+{% endblock %}

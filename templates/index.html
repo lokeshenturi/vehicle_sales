@@ -1,13 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>iam in index page</title>
-</head>
-<body>
-<a href="{{ url_for('about_us') }}">about-us</a>
-<a href="{{ url_for('contact_us') }}">contact-us</a>
-<a href="{{ url_for('index') }}">index</a>
-<h1>{{ context }}</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #181818;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background: #282828;
+            color: #1DB954;
+        }
+        tr:hover {
+            background: #333;
+        }
+    </style>
+    <div class="container">
+        <h2>Top vehicles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th> Name</th>
+                    <th>model</th>
+                    <th>year</th>
+                    <th>transmission</th>
+                    <th>action</th>
+                    <th>action</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                {% for vehicle in content %}
+                <br>
+                <td>{{ vehicle.id }}</td>
+                <td>{{ vehicle.name }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{vehicle.year}}</td>
+                <td>{{vehicle.transmission}}</td>
+                <td><button onclick="confirmDelete({{vehicle.id}})">delete</button></td>
+                <td><button><a href="/update/{{vehicle.id}}">update</a></button></td>
+
+            </tr>
+        {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+<script>
+        function confirmDelete(id) {
+
+            const confirmation = confirm("Are you sure you want to delete this vehicle_data?");
+            if (confirmation) {
+
+                fetch(`/delete/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Show response message
+                    if (data.message === 'vehicle deleted successfully') {
+                        window.location.reload(); // Optionally, refresh the page
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+{% endblock %}
