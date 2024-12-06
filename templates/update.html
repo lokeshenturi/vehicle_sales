@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Song{% endblock %}
+
+{% block content %}
+
+<h1>Update vehicle_data</h1>
+<form method="POST" enctype="application/x-www-form-urlencoded">
+
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" value="{{ id }}" required><br><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ name }}" required><br><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" value="{{ model }}" required><br><br>
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" value="{{ year }}" required><br><br>
+
+    <label for="transmission">Transmission:</label>
+    <input type="text" id="transmission" name="transmission" value="{{ transmission }}" required><br><br>
+
+    <input type="submit" value="Update"> <a href="/">vehicle</a>
+</form>
+
+{% endblock %}

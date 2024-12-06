@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Vehicle Details{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/submit">
+    <!-- Vehicle Information -->
+    <label for="id" class="form-label">ID:</label>
+    <input type="text" id="id" name="id" required><br>
+
+     <label for="name" class="form-label">NAME:</label>
+    <input type="text" id="name" name="name" required><br>
+
+     <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required><br>
+
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required><br>
+
+    <label for="transmission">Transmission:</label>
+    <input type="text" id="transmission" name="transmission" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
